@@ -18,7 +18,7 @@ class Gallery extends Component {
 
   componentWillMount(){
     CameraRoll.getPhotos({
-      first: 20,
+      first: 100,
       assetType: "All"
     }).then(r => this.setState({photos: r.edges}))
 
@@ -26,33 +26,32 @@ class Gallery extends Component {
 
   render(){
     const { photos } = this.state
-    const { imageContainerStyle, imageFlexStyle, imageStyle } = styles
+    const { imageContainerStyle, imageStyle } = styles
     return (
-      <View style={imageContainerStyle}>
+      <ScrollView>
       {(photos !== null) && (
         photos.map((dataPhoto) => {
           return (
-            <TouchableOpacity key={dataPhoto.node.image.uri} style={imageFlexStyle}>
-              <Image style={imageStyle} source={{uri: dataPhoto.node.image.uri}} />
+            <TouchableOpacity key={dataPhoto.node.image.uri}>
+              <Image
+                resizeMode={Image.resizeMode.cover}
+                style={imageStyle}
+                source={{uri: dataPhoto.node.image.uri}}
+              />
             </TouchableOpacity>
           )
         })
       )}
-      </View>
+      </ScrollView>
     )
   }
 }
 
 const styles = {
-  imageContainerStyle: {
-    flexDirection: "row"
-  },
-  imageFlexStyle: {
-    flex: 1
-  },
   imageStyle: {
-    height: 100,
-    width: 100
+    flex: 1,
+    width: 150,
+    height: 150
   }
 }
 
