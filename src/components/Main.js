@@ -4,6 +4,7 @@ import ScrollableTabView, { DefaultTabBar } from "react-native-scrollable-tab-vi
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 import Gallery from "./Gallery";
+import About from "./About";
 
 class Main extends Component {
   constructor(props){
@@ -20,7 +21,9 @@ class Main extends Component {
           <Gallery />
         </TouchableOpacity>
         <Text tabLabel="Photo"> My Text 2</Text>
-        <Text tabLabel="About"> My Text 3</Text>
+        <TouchableOpacity tabLabel="About">
+          <About />
+        </TouchableOpacity>
       </ScrollableTabView>
     )
   }
