@@ -10,7 +10,9 @@ import {
   Button,
   Dimensions
 } from "react-native";
+
 let {height, width} = Dimensions.get('window');
+
 class Gallery extends Component {
   constructor (props){
     super(props);
